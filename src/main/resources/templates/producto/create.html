@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head th:insert="head.html"></head>
+	
+	<body>
+		<div th:insert="navbar.html"></div>
+		<main>
+			<div class="container">
+			<!--ESTA CONECTADO AL OBJETO EN EL MODEL-->
+			<form
+				class="row need-validation was-validated"
+				action="#"
+				th:action="@{/producto/create}"
+				th:method="POST"
+				th:object="${PRODUCTO}"
+				>
+				
+				<div class="form-group">
+					<label for="nombreProducto" class="control-label col-sm-4">Nombre del producto</label>
+					<input 
+					    input name="nombreProducto"
+						type="text"
+						class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="referencia" class="control-label col-sm-4">Referencia</label>
+					<input name="referencia"
+						type="text"
+						class="form-control" required>
+				</div>
+			
+				<div class="form-group">
+					<label for="precio" class="control-label col-sm-4">Precio</label>
+					<input
+					    input name="precio" 
+						type="text"
+						class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="peso" class="control-label col-sm-4">Peso en gramos</label>
+					<input
+					    input name="peso" 
+						type="text"
+						class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="categoria" class="control-label col-sm-4">Categoría</label>
+					<input
+					    input name="categoria" 
+						type="text"
+						class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="stock" class="control-label col-sm-4">Stock</label>
+					<input
+					    input name="stock" 
+						type="text"
+						class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="cantidadVendida" class="control-label col-sm-4">Cantidad vendida</label>
+					<input
+					    input name="cantidadVendida" 
+						type="text"
+						class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="fechaCreacion" class="control-label col-sm-4">
+						Fecha de creación</label>
+					<input 
+						input name="fechaCreacion"
+						type="date"
+						class="form-control" required>
+				</div>
+				<br>
+				<button class="btn btn-success">
+					Guardar
+				</button>
+				<a class="btn btn-info" 
+					role="button"
+					th:href="@{/producto/list}">				
+					volver
+				</a>
+			</form>
+			</div>
+		</main>		
+		<span th:insert="script.html"></span>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" 
+		xmlns="http://www.w3.org/1999/xhtml"
+      	xmlns:th="http://www.thymeleaf.org"
+      >
+      
+	<head>
+		<meta charset="UTF-8">
+		<title>cafeteriaKONECTA</title>
+		<link rel="stylesheet" th:href="@{/css/bootstrap/themes/cerulean/bootstrap.css}" href="../static/css/bootstrap/themes/cerulean/bootstrap.css">
+	</head>
+	
+	<body>
+		<div th:insert="navbar.html"></div>		
+		<main>
+			<div class="container">
+				<header>
+					<h1>Bienvenido al Gestor de inventarios CAFETERIAKONECTA
+				</header>
+				
+				<section>
+					<a class="btn btn-primary" 
+						role="button"
+						th:href="@{/producto/list}">
+						Todos los productos	
+					</a>
+				<section>		
+			</div>
+			<footer class="pt-3 text-mutted border-top flex-end" >
+				
+			</footer>
+		</main>		
+	</body>
+	<div th:insert="script.html"></div>
+</html>

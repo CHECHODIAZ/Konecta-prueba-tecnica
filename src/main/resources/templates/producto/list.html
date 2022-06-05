@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es" 
+		xmlns="http://www.w3.org/1999/xhtml"
+      	xmlns:th="http://www.thymeleaf.org">
+	<head th:insert="head.html"></head>
+	
+	<body>
+		<main>
+			<div th:insert="navbar.html"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col mt-1" >
+						<a class="btn btn-primary" role="button"
+							th:href="@{/producto/formulario}">
+							Nuevo
+						</a>
+					</div>
+				</div>
+				<table class="table">
+					<thead>
+						<th scope="col">ID</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Referencia</th>
+						<th scope="col">Precio</th>
+						<th scope="col">Peso(gr)</th>
+						<th scope="col">Categoria</th>
+						<th scope="col">Stock</th>
+						<th scope="col">Cantidad Vendida</th>
+						<th scope="col">Fecha creacion</th>
+					</thead>
+					<tbody>
+						<tr th:each="producto : ${PRODUCTOS}">
+							<td th:text="${producto.id}"></td>
+							<td th:text="${producto.nombreProducto}"></td>
+							<td th:text="${producto.referencia}"></td>
+							<td th:text="${producto.precio}"></td>
+							<td th:text="${producto.peso}"></td>
+							<td th:text="${producto.categoria}"></td>
+							<td th:text="${producto.stock}"></td>
+							<td th:text="${producto.cantidadVendida}"></td>
+							<td th:text="${producto.fechaCreacion}"></td>
+							<td>
+								<a class="btn btn-secondary" role="button"
+									th:href="@{'/producto/edit/'+ ${producto.id}} ">
+									Editar
+								</a>
+								<a 	class="btn btn-danger"
+									th:attr="onclick='guardar(' + ${producto.id} + ')'"
+									data-bs-toggle="modal" data-bs-target="#exampleModal"
+									>
+									Eliminar
+								</a>
+							</td>						
+						</tr>
+					</tbody>
+				</table>		
+			</div>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			      	¿Desea eliminar el producto?
+			      </div>
+			      <div class="modal-footer">
+  			        <form 
+  			        	id="eliminarForm" 
+  			        	action="#"
+  			        	th:method="GET"
+  			        	th:action="@{/producto/delete}"
+  			        	>
+			        	<input name="id" 
+			        		type="hidden" 
+			        		id="idProductoEliminar">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+				        <button type="submit" class="btn btn-primary">Confirmar</button>
+			        </form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</main>
+		<span th:insert="script.html"></span>
+		<script>
+			function guardar(id) {
+				document.getElementById('idProductoEliminar').value=id
+			}
+		</script>
+		<script>
+			function asignar(id) {
+				document.getElementById('idproducto').value=id
+			}
+		</script>
+	</body>
+</html>
