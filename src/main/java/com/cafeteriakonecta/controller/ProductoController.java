@@ -56,7 +56,7 @@ public class ProductoController {
 			@ModelAttribute("PRODUCTO")
 			Producto producto
 			) {
-		  producto.setStock(producto.getStock()-producto.getCantidadVendida());
+		  producto.setStock(producto.getStock() - producto.getCantidadVendida());
 		this.service.create(producto);
 		
 		return "redirect:/producto/list";
